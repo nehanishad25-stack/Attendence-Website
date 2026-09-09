@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Attendance</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo">
+            <div class="logo-icon">◎</div>
+            <h2>Smart Attendance</h2>
+        </div>
+
+    </header>
+
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <button class="nav-btn active" data-page="dashboard">
+            Dashboard
+        </button>
+
+        <button class="nav-btn" data-page="attendance">
+            Attendance
+        </button>
+
+        <button class="nav-btn" data-page="register">
+            Register
+        </button>
+
+        <button class="nav-btn" data-page="reports">
+            Reports
+        </button>
+
+        <button class="nav-btn" data-page="students">
+            Students
+        </button>
+
+    </nav>
+
+
+    <main class="container">
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="page active">
+
+            <h1>Dashboard</h1>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="icon blue">👥</div>
+
+                    <div>
+                        <h2 id="totalStudents">0</h2>
+                        <p>Total Students</p>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="icon green">✓</div>
+
+                    <div>
+                        <h2 id="presentStudents">0</h2>
+                        <p>Present Today</p>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="icon red">✕</div>
+
+                    <div>
+                        <h2 id="absentStudents">0</h2>
+                        <p>Absent Today</p>
+                    </div>
+                </div>
+
+                <!-- Leave -->
+                <div class="card">
+                    <div class="icon purple">📅</div>
+
+                    <div>
+                        <h2 id="leaveStudents">0</h2>
+                        <p>Leave Today</p>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="icon purple">📅</div>
+
+                    <div>
+                        <h2 id="todayDate">--</h2>
+                        <p>Current Date</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-box">
+
+                <h2>Attendance Summary</h2>
+
+                <div class="progress-box">
+
+                    <div class="progress-text">
+                        <span>Today's Attendance</span>
+
+                        <strong id="attendancePercent">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div class="progress">
+                        <div id="progressBar" class="progress-bar">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ATTENDANCE ================= -->
+
+        <section id="attendance" class="page">
+
+            <h1>Live Attendance</h1>
+
+            <div class="attendance-layout">
+
+                <!-- CAMERA -->
+
+                <div class="camera-box">
+
+                    <h2>Camera Scanner</h2>
+
+                    <div class="camera-container">
+
+                        <video id="video" autoplay muted playsinline>
+                        </video>
+
+                        <div id="cameraMessage" class="camera-message">
+
+                            Camera Off
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="camera-buttons">
+
+                        <button id="startCamera" class="primary-btn">
+
+                            Start Camera
+
+                        </button>
+
+                        <button id="stopCamera" class="danger-btn">
+
+                            Stop Camera
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SCANNER -->
+
+                <div class="scan-box">
+
+                    <h2>Scan Attendance</h2>
+
+                    <p>
+                        Look at the camera and scan your face.
+                    </p>
+
+
+                    <div class="scan-info">
+
+                        <span>Registered Students</span>
+
+                        <strong id="registeredFaceCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <button id="scanBtn" class="scan-btn">
+
+                        📷 Scan My Face
+
+                    </button>
+
+
+                    <div id="scanMessage" class="scan-message">
+
+                        Waiting for scan...
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT -->
+
+            <div class="box">
+
+                <h2>Recent Attendance</h2>
+
+                <div id="recentAttendance"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= REGISTER ================= -->
+
+        <section id="register" class="page">
+
+            <h1>Register Student</h1>
+
+            <div class="box register-box">
+
+                <h2>Add New Student</h2>
+
+                <p class="help-text">
+                    Enter the student's name and keep the student's face
+                    clearly visible in the camera.
+                </p>
+
+                <input type="text" id="studentName" placeholder="Enter student name">
+
+                <button id="registerBtn" class="primary-btn">
+
+                    Register Student + Face
+
+                </button>
+
+
+                <p id="registerMessage"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= REPORTS ================= -->
+
+        <section id="reports" class="page">
+
+            <h1>Attendance Reports</h1>
+
+
+            <div class="report-tabs">
+
+                <button id="dailyTab" class="report-tab active">
+
+                    📅 Daily Report
+
+                </button>
+
+
+                <button id="monthlyTab" class="report-tab">
+
+                    📆 Monthly Report
+
+                </button>
+
+            </div>
+
+
+            <!-- DAILY REPORT -->
+
+            <div id="dailyReport" class="box report-section">
+
+                <div class="report-controls">
+
+                    <label>
+                        Select Date
+                    </label>
+
+                    <input type="date" id="reportDate">
+
+                </div>
+
+
+                <div class="report-cards">
+
+                    <div class="small-card">
+                        <strong id="dailyTotal">0</strong>
+                        <span>Total</span>
+                    </div>
+
+                    <div class="small-card present-card">
+                        <strong id="dailyPresent">0</strong>
+                        <span>Present</span>
+                    </div>
+
+                    <div class="small-card absent-card">
+                        <strong id="dailyAbsent">0</strong>
+                        <span>Absent</span>
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Student</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="dailyTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- MONTHLY REPORT -->
+
+            <div id="monthlyReport" class="box report-section hidden">
+
+                <div class="report-controls">
+
+                    <label>
+                        Select Month
+                    </label>
+
+                    <input type="month" id="reportMonth">
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Student</th>
+                                <th>Present</th>
+                                <th>Absent</th>
+                                <th>Attendance %</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="monthlyTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <p class="report-note">
+                    Monthly absent is calculated from the days on which
+                    attendance was recorded in the system.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STUDENTS ================= -->
+
+        <section id="students" class="page">
+
+            <h1>Students</h1>
+
+            <div class="box">
+
+                <input type="text" id="searchStudent" class="search" placeholder="Search student...">
+
+                <div id="studentList"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

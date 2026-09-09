@@ -1,0 +1,646 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fc;
+    color: #333;
+}
+
+
+/* HEADER */
+
+.header {
+    height: 70px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 0 35px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.logo-icon {
+    width: 35px;
+    height: 35px;
+    background: #4169e1;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+
+.logo h2 {
+    color: #4169e1;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    background: white;
+    display: flex;
+    gap: 10px;
+    padding-left: 25px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.nav-btn {
+    border: none;
+    background: none;
+    padding: 18px 15px;
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+}
+
+
+.nav-btn:hover {
+    color: #4169e1;
+}
+
+
+.nav-btn.active {
+    color: #4169e1;
+    border-bottom: 3px solid #4169e1;
+}
+
+
+/* MAIN */
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 25px auto;
+}
+
+
+.page {
+    display: none;
+}
+
+
+.page.active {
+    display: block;
+}
+
+
+.page h1 {
+    margin-bottom: 20px;
+}
+
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+.card h2 {
+    font-size: 22px;
+}
+
+
+.card p {
+    color: #777;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+
+.icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+}
+
+
+.blue {
+    background: #4169e1;
+}
+
+
+.green {
+    background: #20b26b;
+}
+
+
+.red {
+    background: #e74c3c;
+}
+
+
+.purple {
+    background: #7b4de8;
+}
+
+
+/* BOX */
+
+.box,
+.dashboard-box {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+/* PROGRESS */
+
+.progress-box {
+    margin-top: 20px;
+}
+
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+
+.progress {
+    width: 100%;
+    height: 12px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #4169e1;
+    transition: 0.4s;
+}
+
+
+/* ATTENDANCE */
+
+.attendance-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+
+.camera-box,
+.scan-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+.camera-container {
+    width: 100%;
+    height: 400px;
+    margin-top: 15px;
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.camera-message {
+    position: absolute;
+    color: white;
+    font-size: 18px;
+}
+
+
+.camera-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
+/* BUTTONS */
+
+.primary-btn,
+.danger-btn,
+.scan-btn {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    color: white;
+}
+
+
+.primary-btn {
+    background: #4169e1;
+}
+
+
+.primary-btn:hover {
+    background: #3156c7;
+}
+
+
+.danger-btn {
+    background: #e74c3c;
+}
+
+
+.danger-btn:hover {
+    background: #c0392b;
+}
+
+
+.scan-btn {
+    width: 100%;
+    background: #20b26b;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+
+.scan-btn:hover {
+    background: #159957;
+}
+
+
+/* SCAN BOX */
+
+.scan-box p {
+    color: #777;
+    margin: 10px 0 20px;
+}
+
+
+.scan-message {
+    text-align: center;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 7px;
+    background: #f5f7fc;
+    color: #555;
+    min-height: 45px;
+}
+
+
+.scan-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: #f5f7fc;
+    border-radius: 8px;
+}
+
+
+.scan-info strong {
+    color: #4169e1;
+}
+
+
+/* REGISTER */
+
+.register-box input {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+
+.register-box button {
+    margin-top: 5px;
+}
+
+
+#registerMessage {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+
+.help-text {
+    color: #777;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+
+/* INPUTS */
+
+select,
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+}
+
+
+input:focus {
+    border-color: #4169e1;
+}
+
+
+/* STUDENT LIST */
+
+.search {
+    margin-bottom: 15px;
+}
+
+
+.student-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.student-name {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.registered {
+    color: #20b26b;
+    font-size: 13px;
+}
+
+
+.not-registered {
+    color: #e74c3c;
+    font-size: 13px;
+}
+
+
+.student-actions {
+    display: flex;
+    gap: 5px;
+}
+
+
+.edit-btn,
+.delete-btn {
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.edit-btn {
+    background: #4169e1;
+    color: white;
+}
+
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+
+.edit-btn:hover {
+    background: #3156c7;
+}
+
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+
+/* TABLE */
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+th,
+td {
+    padding: 13px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+
+th {
+    background: #f5f7fc;
+}
+
+
+.present-status {
+    color: #20b26b;
+    font-weight: bold;
+}
+
+
+.absent-status {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+
+/* RECENT */
+
+.recent-item {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* REPORTS */
+
+.report-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+
+.report-tab {
+    border: none;
+    background: white;
+    padding: 12px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.08);
+}
+
+
+.report-tab.active {
+    background: #4169e1;
+    color: white;
+}
+
+
+.report-controls {
+    max-width: 300px;
+}
+
+
+.report-controls label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+
+.report-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+.small-card {
+    background: #f5f7fc;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.small-card strong {
+    font-size: 25px;
+}
+
+
+.small-card span {
+    color: #777;
+}
+
+
+.present-card strong {
+    color: #20b26b;
+}
+
+
+.absent-card strong {
+    color: #e74c3c;
+}
+
+
+.report-note {
+    color: #777;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .attendance-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        overflow-x: auto;
+    }
+
+    .camera-container {
+        height: 300px;
+    }
+
+    .camera-buttons {
+        flex-direction: column;
+    }
+
+    .student-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .student-actions {
+        width: 100%;
+    }
+
+    .report-cards {
+        grid-template-columns: 1fr;
+    }
+
+}
